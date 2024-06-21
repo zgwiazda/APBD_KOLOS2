@@ -1,10 +1,15 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using APBD_KOLOS2.DTOs;
-using APBD_KOLOS2.Models;
 
-namespace APBD_KOLOS2.Services;
-
-public interface IDbService
+namespace APBD_KOLOS2.Services
 {
-    Task<List<OwnerInfoDTO>> GetAllOwnersWithItemsAsync();
-    Task AddOwnerAsync(OwnerInfoDTO ownerDto);
+    public interface IDbService
+    {
+       
+        Task<OwnerInfoDTO> GetOwnerWithItemsAsync(int ownerId);
+        Task<bool> IfOwnerExistsAsync(int ownerId);
+        Task AddOwnerAsync(OwnerInfoDTO ownerDto, List<int> objectIds);
+        Task<bool> ObjectExistsAsync(int objectId);
+    }
 }
