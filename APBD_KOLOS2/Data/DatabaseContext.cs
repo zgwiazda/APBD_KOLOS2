@@ -5,17 +5,19 @@ using Object = APBD_KOLOS2.Models.Object;
 
 public class DatabaseContext : DbContext
 {
+    protected DatabaseContext()
+    {
+    }
+
+    public DatabaseContext(DbContextOptions options) : base(options)
+    {
+    }
     public DbSet<Warehouse> Warehouses { get; set; }
     public DbSet<Object> Objects { get; set; }
     public DbSet<Object_Type> ObjectTypes { get; set; }
     public DbSet<Owner> Owners { get; set; }
     public DbSet<Object_Owner> ObjectOwners { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("");
-    }
-
+   
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

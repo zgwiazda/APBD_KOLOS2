@@ -9,7 +9,7 @@ namespace APBD_KOLOS2.Services
        
         Task<OwnerInfoDTO> GetOwnerWithItemsAsync(int ownerId);
         Task<bool> IfOwnerExistsAsync(int ownerId);
-        Task AddOwnerAsync(OwnerInfoDTO ownerDto, List<int> objectIds);
+        Task AddOwnerAsync(OwnerInfoDTO ownerDto);
         Task<bool> ObjectExistsAsync(int objectId);
     }
 }

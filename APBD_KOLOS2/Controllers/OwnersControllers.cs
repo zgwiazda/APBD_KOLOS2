@@ -38,7 +38,7 @@ namespace kolokwium1.Controllers
                 PhoneNumber = ownerDto.PhoneNumber
             };
 
-            _ownerRepository.AddOwnerAsync(ownerDto, objectIds);
+            _ownerRepository.AddOwnerAsync(ownerDto);
 
             if (ownerDto.Objects != null && ownerDto.Objects.Any())
             {
@@ -49,7 +49,7 @@ namespace kolokwium1.Controllers
                         Owner = owner,
                         Object_ID = objectDto.ID
                     };
-                    _ownerRepository.AddOwnerAsync(ownerDto, objectIds);                }
+                    _ownerRepository.AddOwnerAsync(ownerDto);                }
             }
             
         }

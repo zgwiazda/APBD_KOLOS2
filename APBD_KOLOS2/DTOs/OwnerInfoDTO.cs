@@ -1,3 +1,6 @@
+using APBD_KOLOS2.Models;
+using Object = APBD_KOLOS2.Models.Object;
+
 namespace APBD_KOLOS2.DTOs
 {
     public class OwnerInfoDTO
@@ -6,6 +9,6 @@ namespace APBD_KOLOS2.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public List<ObjectDTO> Objects { get; set; }
+        public ObjectDTO[] Objects { get; set; }
     }
 }

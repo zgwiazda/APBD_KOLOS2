@@ -42,7 +42,7 @@ namespace APBD_KOLOS2.Services
                     Object_Type_ID = oo.Object.Object_Type_ID,
                     Width = oo.Object.Width,
                     Height = oo.Object.Height
-                }).ToList()
+                }).ToArray()
             };
 
             return ownerInfoDto;
@@ -53,21 +53,23 @@ namespace APBD_KOLOS2.Services
             return await _context.Owners.AnyAsync(o => o.ID == ownerId);
         }
 
-        public async Task AddOwnerAsync(OwnerInfoDTO ownerDto, List<int> objectIds)
+        public async Task AddOwnerAsync(OwnerInfoDTO ownerDto)
         {
+          
             var owner = new Owner
             {
                 FirstName = ownerDto.FirstName,
                 LastName = ownerDto.LastName,
-                PhoneNumber = ownerDto.PhoneNumber
+                PhoneNumber = ownerDto.PhoneNumber,
+               
             };
 
             _context.Owners.Add(owner);
 
           
-            if (objectIds != null && objectIds.Any())
+            if (ownerDto.Objects!= null && ownerDto.Objects.Any())
             {
-                foreach (var objectId in objectIds)
+                foreach (var objectId in ownerDto.Objects)
                 {
                     var @object = await _context.Objects.FindAsync(objectId);
                     if (@object != null)
